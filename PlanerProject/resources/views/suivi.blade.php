@@ -114,21 +114,21 @@ td{
               <nav class="navbar navbar-expand-lg navbar-light ">
           
                 <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item ">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Suivi</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                  </ul>
-                </div>
+                    <ul class="navbar-nav">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ route('suivi') }}">Suivi</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ route('ajouter') }}">Ajouter</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                      </li>
+                    </ul>
+                  </div>
               </nav>
             </div>
             <div class="col-md-4"> 
@@ -204,9 +204,9 @@ td{
                 var table = $('#table_id').DataTable({
      });
     
-    
+    /* 
      var table2 = $('#table').DataTable({
-    });
+    }); */
   
     
                 $.ajax({

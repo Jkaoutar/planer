@@ -34,10 +34,10 @@
                       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="suivi.html">Suivi</a>
+                      <a class="nav-link" href="{{ route('suivi') }}">Suivi</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Pricing</a>
+                      <a class="nav-link" href="{{ route('ajouter') }}">Ajouter</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link disabled" href="#">Disabled</a>
@@ -83,7 +83,7 @@
                      </a>
                    </div>
                   <div class="col-12 col-md-4 col-lg-4 col-xl-4  div" style="background-color:#d6a68b;">
-                    <a href="#" style="position: absolute;
+                    <a href="{{ route('ajouter') }}" style="position: absolute;
                     left: 50%;
                     top: 50%;
                     -webkit-transform: translate(-50%, -50%);
