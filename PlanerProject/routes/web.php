@@ -22,5 +22,5 @@ Route::get('suivi', function () {
 
     return view('suivi');
 })->name('suivi');
-route::get("get_societe", [SocieteController::class, 'get_societe'])->name('get_societe');
-//route::get("get_societe/{id?}", [SocieteController::class, 'get_societe'])->name('get_societe');
+//route::get("get_societe", [SocieteController::class, 'get_societe'])->name('get_societe');
+route::get("get_societe/{id?}", [SocieteController::class, 'get_societe'])->name('get_societe');

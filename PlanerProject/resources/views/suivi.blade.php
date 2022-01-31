@@ -17,6 +17,19 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
       <style>
+          
+          .inquirytable label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #d1d1d1;
+    line-height: normal;
+}
+.inquirytable h5 {
+    font-size: 12px;
+    font-weight: 400;
+    color: #242424;
+    line-height: normal;
+}
     input[type="submit"] {
         border-radius: 10px;
         font-size: 20px;
@@ -31,9 +44,7 @@
      a{
             text-decoration : none;
         }
-        @font-face {font-family: "Effra"; 
-src: url("//db.onlinewebfonts.com/t/f41eeef7f001b066c10e8597ddf6eca2.eot"); 
-src:url("//db.onlinewebfonts.com/t/f41eeef7f001b066c10e8597ddf6eca2.woff2") format("woff2"); }
+       
  @media (max-width:1024px){
      table tr, table tr td:nth-last-child(1) {
     display: block !important;
@@ -47,7 +58,48 @@ td{
 }
 
  }
+/**************************/
 
+        .onglet
+        {
+                display:inline-block;
+                margin-left:3px;
+                margin-right:3px;
+                padding:3px;
+                border:1px solid black;
+                cursor:pointer;
+        }
+        .onglet_0
+        {
+                background:#bbbbbb;
+                border-bottom:1px solid black;
+        }
+        .onglet_1
+        {
+                background:#dddddd;
+                border-bottom:0px solid black;
+                padding-bottom:4px;
+        }
+        .contenu_onglet
+        {
+                background-color:#dddddd;
+                border:1px solid black;
+                margin-top:-1px;
+                padding:5px;
+                display:none;
+        }
+        ul
+        {
+                margin-top:0px;
+                margin-bottom:0px;
+                margin-left:-10px
+        }
+        h1
+        {
+                margin:0px;
+                padding:0px;
+        }
+        
 </style>
    </head>
    <body>
@@ -119,6 +171,21 @@ td{
                             <th class="td" style="visibility:hidden" >  </th>
     
                         </tr>
+                       
+                    </thead>
+    
+                </table>
+                <table class="table inquirytable" id="table">
+                    <thead >
+                        <tr>
+                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
+                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
+                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
+                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
+                           
+    
+                        </tr>
+                       
                     </thead>
     
                 </table>
@@ -131,12 +198,17 @@ td{
         <script type="application/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready(function() {
-    
+                $.noConflict();
                 const $urlHolder = $('#url-holder');
-    
+               
                 var table = $('#table_id').DataTable({
-        "ordering": false,
      });
+    
+    
+     var table2 = $('#table').DataTable({
+    });
+  
+    
                 $.ajax({
                     type: 'get',
                     url: $urlHolder.data('societe')+'/'+0,
@@ -146,12 +218,25 @@ td{
                         
                         table.clear().draw();
                         $.each(data.result, function(key, val) {
+                            var date = new Date(val.DateSignature);
+                           
+                            var newdate = new Date(date);
+                            newdate.setDate(newdate.getDate() + 180);
+                            var dd = newdate.getDate();
+                            var mm = newdate.getMonth() + 1;
+                            var y = newdate.getFullYear();
+                            var someFormattedDate = mm + '-' + dd + '-' + y;
+                            newdate.setDate(newdate.getDate() + 547);
+                            var dd = newdate.getDate();
+                            var mm = newdate.getMonth() + 1;
+                            var y = newdate.getFullYear();
+                            var someFormattedDate2 = mm + '-' + dd + '-' + y;
                             table.row.add([
                                 `<label>Entreprise</label>
                               
-                                <h5><a href="" class="ainquiries">${val.Entreprise}</a></h5>`,
+                                <h5><span class="openedcolor"></span>${val.Entreprise}</h5>`,
                                  `<label>Intitulé du Projet</label>
-                                <h5><a href=""  class="ainquiries">${val.IntituleProjet}</a></h5>`,
+                                 <h5><span class="openedcolor"></span>${val.IntituleProjet}</h5>`,
                                 `<label>Branche d'activitée</label>
                                 <h5><span class="openedcolor"></span>${val.BrancheActivitee}</h5>`,
                                 `<label> Programme d'Investissement</label>
@@ -159,16 +244,42 @@ td{
                                 `<label> Date de signature</label>
                                 <h5><span class="openedcolor"></span>${val.DateSignature}</h5>`,
                                 `<label> Date de lancement</label>
-                                <h5><span class="openedcolor"></span>${val.DateLancement}</h5>`,
+                                <h5><span class="openedcolor"></span>${someFormattedDate}</h5>`,
                                 `<label> Date d'échéance</label>
-                                <h5><span class="openedcolor"></span>${val.DateEcheance}</h5>`,
+                                <h5><span class="openedcolor"></span>${someFormattedDate2}</h5>`,
                                 `<label>Emplois prévus</label>
-                                <h5><span class="openedcolor"></span>${val.EmploisPrevus}</h5>`
+                                <h5><span class="openedcolor"></span>${val.EmploisPrevus}</h5>
+                               `
                                 
                                 
                                 
                                
                             ]).draw(false);
+                           
+   
+                          /*  table2.row.add([
+                                `<label style="color: black; background-color : #d1d1d1" ><B>Avancement dans le projet</B></label>
+                              
+                                <h5><span class="openedcolor" ></span></h5>
+                                `,
+
+                                 `<label><B>Montants accordés dans le cadre du FIET</B></label>
+                                 <h5><span class="openedcolor"></span></h5>`,
+                                `<label><B>Branche d'activitée</B></label>
+                                <h5><span class="openedcolor"></span></h5>
+                                `,
+                                `<label><B>Montants débloqués</B></label>
+                                <h5><span class="openedcolor"></span></h5>
+                                `,
+                              
+                                
+                                
+                                
+                               
+                            ]).draw(false);*/
+                            
+                            
+                          
                        
                         });
     
@@ -185,29 +296,7 @@ td{
         <script src=
 "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js">
         </script>
-        <script src="fancyTable.js"></script>
-        <script type="text/javascript">
-                  
-            $(document).ready(function(){
-              
-                $("#tableID").fancyTable({
-                   sortColumn:0,
-                   /* Setting pagination or enabling */
-                   pagination: false,
-                       globalSearch:true,
-                    /* Exclude 2nd column from global search.*/
-                   globalSearchExcludeColumns: [2],
-                   onInit:function(){                 
-                   /* On initialization of table */
-                                 console.log({ element:this });
-                                    },
-                   onUpdate:function(){
-                   /* On update like search and sort of table */                  
-                    console.log({ element:this });
-                   }
-                       });                            
-            });            
-        </script>
+       
          </div>
       </div>
      
