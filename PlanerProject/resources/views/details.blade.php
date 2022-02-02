@@ -103,7 +103,7 @@ td{
 </style>
    </head>
    <body>
-    <div id="url-holder" data-societe="{{ route('get_societe') }}"></div>
+    <div id="url-holder" data-societe="{{ route('get_societe_id') }}"></div>
       <div class="first">
         <div class="container">
           <div class="row" id="headerLogo">
@@ -163,25 +163,6 @@ td{
                         <tr>
                             <th class="td" style="visibility:hidden" >  </th>
                             <th class="td" style="visibility:hidden"> </th>
-                            <th class="td" style="visibility:hidden"></th>
-                            <th class="td" style="visibility:hidden"></th>
-                            <th class="td" style="visibility:hidden" >  </th>
-                            <th class="td" style="visibility:hidden" >  </th>
-                            <th class="td" style="visibility:hidden" >  </th>
-                            <th class="td" style="visibility:hidden" >  </th>
-    
-                        </tr>
-                       
-                    </thead>
-    
-                </table>
-                <table class="table inquirytable" id="table">
-                    <thead >
-                        <tr>
-                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
-                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
-                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
-                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
                            
     
                         </tr>
@@ -189,6 +170,8 @@ td{
                     </thead>
     
                 </table>
+               
+               
     
             </div>
         </section>
@@ -217,8 +200,9 @@ td{
                     success: function(data) {
                         
                         table.clear().draw();
-                        $.each(data.result, function(key, val) {
-                            var date = new Date(val.DateSignature);
+                    
+                        console.log(data.result);
+                            var date = new Date(data['DateSignature']);
                            
                             var newdate = new Date(date);
                             newdate.setDate(newdate.getDate() + 180);
@@ -234,22 +218,10 @@ td{
                             table.row.add([
                                 `<label>Entreprise</label>
                               
-                                <h5><a href="details/` + val.id + `" " ><span class="openedcolor"></span>${val.Entreprise}</a></h5>`,
+                                <h5><span class="openedcolor"></span>${data['Entreprise']}</h5>`,
                                  `<label>Intitulé du Projet</label>
-                                 <h5><span class="openedcolor"></span>${val.IntituleProjet}</h5>`,
-                                `<label>Branche d'activitée</label>
-                                <h5><span class="openedcolor"></span>${val.BrancheActivitee}</h5>`,
-                                `<label> Programme d'Investissement</label>
-                                <h5><span class="openedcolor"></span>${val.ProgrammeInvestissement}</h5>`,
-                                `<label> Date de signature</label>
-                                <h5><span class="openedcolor"></span>${val.DateSignature}</h5>`,
-                                `<label> Date de lancement</label>
-                                <h5><span class="openedcolor"></span>${someFormattedDate}</h5>`,
-                                `<label> Date d'échéance</label>
-                                <h5><span class="openedcolor"></span>${someFormattedDate2}</h5>`,
-                                `<label>Emplois prévus</label>
-                                <h5><span class="openedcolor"></span>${val.EmploisPrevus}</h5>
-                               `
+                                 <h5><span class="openedcolor"></span>${data['IntituleProjet']}</h5>`
+                              
                                 
                                 
                                 
@@ -257,31 +229,11 @@ td{
                             ]).draw(false);
                            
    
-                          /*  table2.row.add([
-                                `<label style="color: black; background-color : #d1d1d1" ><B>Avancement dans le projet</B></label>
-                              
-                                <h5><span class="openedcolor" ></span></h5>
-                                `,
-
-                                 `<label><B>Montants accordés dans le cadre du FIET</B></label>
-                                 <h5><span class="openedcolor"></span></h5>`,
-                                `<label><B>Branche d'activitée</B></label>
-                                <h5><span class="openedcolor"></span></h5>
-                                `,
-                                `<label><B>Montants débloqués</B></label>
-                                <h5><span class="openedcolor"></span></h5>
-                                `,
-                              
-                                
-                                
-                                
-                               
-                            ]).draw(false);*/
-                            
-                            
+                     
+                    
                           
                        
-                        });
+                       
     
                     },
                 });

@@ -26,5 +26,11 @@ Route::get('ajouter', function () {
 
     return view('ajouter');
 })->name('ajouter');
+Route::get('details/{id?}', function () {
+
+    return view('details');
+})->name('details');
 //route::get("get_societe", [SocieteController::class, 'get_societe'])->name('get_societe');
 route::get("get_societe/{id?}", [SocieteController::class, 'get_societe'])->name('get_societe');
+route::get("get_societe_id/{id?}", [SocieteController::class, 'get_societe_id'])->name('get_societe_id');
+Route::post('addsociete',[SocieteController::class, 'addsociete'] )->name('addsociete');
