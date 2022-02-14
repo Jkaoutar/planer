@@ -33,4 +33,8 @@ Route::get('details/{id?}', function () {
 //route::get("get_societe", [SocieteController::class, 'get_societe'])->name('get_societe');
 route::get("get_societe/{id?}", [SocieteController::class, 'get_societe'])->name('get_societe');
 route::get("get_societe_id/{id?}", [SocieteController::class, 'get_societe_id'])->name('get_societe_id');
+route::get("modification", [SocieteController::class, 'ListSociete'])->name('modification');
 Route::post('addsociete',[SocieteController::class, 'addsociete'] )->name('addsociete');
+Route::post('adddonnee',[SocieteController::class, 'adddonnee'] )->name('adddonnee');
+Route::get('modificationGlobal/{id?}',[SocieteController::class, 'modificationGlobal'] )->name('modificationGlobal');
+Route::post('ModificationGlobalPost',[SocieteController::class, 'ModificationGlobalPost'] )->name('ModificationGlobalPost');

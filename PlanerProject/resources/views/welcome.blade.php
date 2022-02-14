@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="{{ route('welcome') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('suivi') }}">Suivi</a>
@@ -40,7 +40,7 @@
                       <a class="nav-link" href="{{ route('ajouter') }}">Ajouter</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="#">Disabled</a>
+                      <a class="nav-link " href="{{ route('modification') }}">Modification</a>
                     </li>
                   </ul>
                 </div>
@@ -93,7 +93,7 @@
                     </a>
                    </div>
                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 div " style="background-color:#efded3;">
-                      <a href="#" style="position: absolute;
+                      <a href="{{ route('modification') }}" style="position: absolute;
                       left: 50%;
                       top: 50%;
                       -webkit-transform: translate(-50%, -50%);

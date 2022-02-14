@@ -115,17 +115,17 @@ td{
           
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                      <li class="nav-item active">
+                      <li class="nav-item ">
                         <a class="nav-link" href="{{ route('welcome') }}">Home <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ route('suivi') }}">Suivi</a>
+                        <a class="nav-link active" href="{{ route('suivi') }}">Suivi</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="{{ route('ajouter') }}">Ajouter</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                        <a class="nav-link " href="{{ route('modification') }}">Modification</a>
                       </li>
                     </ul>
                   </div>
@@ -175,20 +175,7 @@ td{
                     </thead>
     
                 </table>
-                <table class="table inquirytable" id="table">
-                    <thead >
-                        <tr>
-                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
-                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
-                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
-                            <th class="td" colspan= "2" style="visibility:hidden" >  </th>
-                           
-    
-                        </tr>
-                       
-                    </thead>
-    
-                </table>
+               
     
             </div>
         </section>
@@ -234,7 +221,7 @@ td{
                             table.row.add([
                                 `<label>Entreprise</label>
                               
-                                <h5><a href="details/` + val.id + `" " ><span class="openedcolor"></span>${val.Entreprise}</a></h5>`,
+                                <h5><a href="details/` + val.id + `" ><span class="openedcolor"></span>${val.Entreprise}</a></h5>`,
                                  `<label>Intitulé du Projet</label>
                                  <h5><span class="openedcolor"></span>${val.IntituleProjet}</h5>`,
                                 `<label>Branche d'activitée</label>
